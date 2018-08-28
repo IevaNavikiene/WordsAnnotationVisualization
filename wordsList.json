@@ -1,0 +1,21 @@
+[
+        {
+            "class": 1,
+            "name": "run",
+            "target": 8,
+            "weight": 4
+        },
+        {
+            "class": 1,
+            "name": "aburagiri",
+            "target": 8,
+            "weight": 4
+        },
+        {
+            "class": 2,
+            "name": "abusedly",
+            "target": 8,
+            "weight": 4
+        }
+	]
+
