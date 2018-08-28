@@ -9,7 +9,8 @@ There should be a possibility to move a word from one cluster to another and exp
 ## Getting started
 
 
-
+## Used examples
+1) https://bl.ocks.org/mbostock/7607535
 
 ## Next steps
 1. Implement nodes clustering. Did not found the right design but it would be like in one of these tutorials:
