@@ -1,42 +1,23 @@
 {
- "name": "topics",
  "children": [
   {
    "name": "Famous people",
    "children": [
-    {
-     "name": "presidents",
-     "children": [
-      {"name": "Obama", "size": 3938},
-      {"name": "Grybauskaite", "size": 3812},
-      {"name": "Trump", "size": 6714},
-      {"name": "Merkel", "size": 743}
+      {"name": "Obama", "size": 2000},
+      {"name": "Grybauskaite", "size": 2000},
+      {"name": "Trump", "size": 2000},
+      {"name": "Merkel", "size": 2000},
+      {"name": "Rolling Stones", "size": 2000},
+      {"name": "Jack White", "size": 2000},
+      {"name": "Dave Matthews", "size": 2000}
      ]
-    },
-    {
-     "name": "music",
-     "children": [
-      {"name": "Rolling Stones", "size": 3534},
-      {"name": "Jack White", "size": 5731},
-      {"name": "Dave Matthews", "size": 7840}
-     ]
-    }
-   ]
   },
   {
    "name": "science",
    "children": [
-    {"name": "history", "size": 17010},
-    {"name": "medicine", "size": 5842},
-    {
-     "name": "technology",
-     "children": [
-      {"name": "nano", "size": 1983},
-      {"name": "informatics", "size": 2047},
-      {"name": "biology", "size": 1375},
-      {"name": "physics", "size": 8746}
-     ]
-    }
+    {"name": "history", "size": 2000},
+    {"name": "medicine", "size": 2000},
+    {"name": "technology", "size": 2000}
    ]
   }
  ]

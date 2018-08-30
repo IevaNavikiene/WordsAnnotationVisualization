@@ -56,12 +56,20 @@ d3.json("topics.json", function(error, root) {
   var focus = root,
       nodes = pack(root).descendants(),
       view;
-
+  nodes = nodes.slice(1,nodes.length)
+ 
+//  var color = d3.scaleOrdinal()
+ //   .range(d3.schemeCategory20);
+  	// adding a color scale
+	var color = d3.scaleLinear()
+		.range(d3.schemeCategory20);
+        
   var circle = g.selectAll("circle")
     .data(nodes)
     .enter().append("circle")
       .attr("class", function(d) { return d.parent ? d.children ? "node" : "node node--leaf" : "node node--root"; })
-      .style("fill", function(d) { return d.children ? color(d.depth) : null; })
+      //.style("fill", function(d) { return d.children ? color(d.depth) : null; })
+      .style("fill", function(d, i) { return color(i); })
       .on("click", function(d) { if (focus !== d) zoom(d), d3.event.stopPropagation(); });
 
   var text = g.selectAll("text")
@@ -72,12 +80,19 @@ d3.json("topics.json", function(error, root) {
       .style("display", function(d) { return d.parent === root ? "inline" : "none"; })
       .text(function(d) { return d.data.name; });
 
-  var node = g.selectAll("circle,text");
+  var node = g.selectAll("circle,text");//.filter('*:not(.node--leaf)');
 
   svg
       .style("background", color(-1))
       .on("click", function() { zoom(root); });
-
+      
+  var nodeLeafes = g.selectAll("circle,text").filter(".node--leaf");
+  console.log(nodeLeafes,'nodeLeafes');
+  //nodeLeafes.call(d3.drag()
+  nodeLeafes.call(d3.drag()
+        .on("start", dragstarted)
+        .on("drag", dragged)
+        .on("end", dragended));
   zoomTo([root.x, root.y, root.r * 2 + margin]);
 
   function zoom(d) {
@@ -101,6 +116,18 @@ d3.json("topics.json", function(error, root) {
     var k = diameter / v[2]; view = v;
     node.attr("transform", function(d) { return "translate(" + (d.x - v[0]) * k + "," + (d.y - v[1]) * k + ")"; });
     circle.attr("r", function(d) { return d.r * k; });
+  }
+  
+  function dragstarted(d) {
+    d3.select(this).raise().classed("active", true);
+  }
+
+  function dragged(d) {
+    d3.select(this).attr("cx", d.x = d3.event.x).attr("cy", d.y = d3.event.y);
+  }
+
+  function dragended(d) {
+    d3.select(this).classed("active", false);
   }
 });
 
